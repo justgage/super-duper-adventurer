@@ -1,0 +1,1 @@
+# of positive posts, # of negative posts, google trends data (# of searches), budget, content rating (pg, etc), genre, bacon#, studio (pixar, etc), runtime
