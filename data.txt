@@ -1,1 +1,9 @@
 # of positive posts, # of negative posts, google trends data (# of searches), budget, content rating (pg, etc), genre, bacon#, studio (pixar, etc), runtime
+
+What can we get from TheMovieDB:
+Runtime
+Budget
+Revenue
+Adult or no
+studio
+content rating
