@@ -7,3 +7,10 @@ Revenue
 Adult or no
 studio
 content rating
+genre
+
+Which leaves:
+# of positive posts
+# of negative posts
+google trends data
+bacon #
