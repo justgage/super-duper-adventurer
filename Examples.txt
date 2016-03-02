@@ -1,3 +1,4 @@
 Here are some example querys:
 
 https://api.themoviedb.org/3/discover/movie?primary_release_year=2014&page=10&api_key=46162c243979ee401c3e6942765f3d51
+https://api.themoviedb.org/3/movie/56292?api_key=46162c243979ee401c3e6942765f3d51
