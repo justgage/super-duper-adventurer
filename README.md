@@ -1,2 +1,25 @@
 # super-duper-adventurer
-A machine learning program to predict movies revenue. 
+A machine learning program to predict movies revenue.
+
+couldn't get ['10917,Too Young to Die?']
+couldn't get ['16820,F/X2']
+couldn't get ['10276,What About Bob?']
+couldn't get ['55145,High Art  / Exposure']
+couldn't get ['19027,AC/DC: Live at Donington']
+couldn't get ['754,Face/Off']
+couldn't get ['18167,Another 9 1/2 Weeks']
+couldn't get ['8697,Who Am I?']
+couldn't get ['8859,"Dude, Where’s My Car?"']
+couldn't get ['134,"O Brother, Where Art Thou?"']
+couldn't get ['10691,Crazy/Beautiful']
+couldn't get ["14034,What's the Worst That Could Happen?"]
+couldn't get ['1777,Fahrenheit 9/11']
+couldn't get ['4380,Shall We Dance?']
+couldn't get ['5070,How Much Do You Love Me?']
+couldn't get ['10172,Are We Done Yet?']
+couldn't get ['11499,Frost/Nixon']
+couldn't get ['40807,50/50']
+couldn't get ["63492,What's Your Number?"]
+couldn't get ['84348,V/H/S']
+couldn't get ['262391,What Did We Do to Deserve This?']
+couldn't get ['238615,Self/less']
