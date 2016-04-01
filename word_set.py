@@ -1,6 +1,8 @@
 import sys
 import numpy as np
 import string
+import unicodecsv as csv
+import Retrievanator
 
 # Here is the data that LDA spat out
 LDA = [{"school", "high", "college", "student", "girl", "students", "teacher", "time", "girls", "professor", "friends",
@@ -95,18 +97,49 @@ def edit_description(instance):
 def whichCategory(instance):
     return np.argmax(instance[9:-2])
 
+def totalUpCategories(movies):
+
+    grabCol = lambda x: x[9:-2]
+
+    catCols = map(grabCol, movies)
+
+    def addToTotal(total, items):
+        return map(lambda t, x: int(t) + int(x), total, items)
+
+    return reduce(addToTotal, catCols)
+
+def countLDAgroups(arr):
+    groups = {};
+
+    for i in range(len(LDA)):
+        groups[i] = 0
+
+    for category in arr:
+        groups[category[0]] += 1
+
+    return groups
+
 def main(argv):
     instance = np.array(["769","Goodfellas","False","en","Crime|Drama","Warner Bros.","25000000","1990-09-12","146","Henry Hill is a small time gangster, who takes part in a robbery with Jimmy \
         Conway and Tommy De Vito, two other gangsters who have set their sights a bit higher. His two partners kill off everyone else involved in the robbery,\
         and slowly start to climb up through the hierarchy of the Mob. Henry, however, is badly affected by his partners success, but will he stoop low enough to bring about the downfall of Jimmy and Tommy?"
         ,"46836394"])
 
-    instance = edit_description(instance)
+    #instance = edit_description(instance)
+    #print(instance)
+    #print(whichCategory(instance))
 
-    print(instance)
+    reader = csv.reader(open("detailed_new_list2.csv", "rb"), delimiter=',')
+    movies_arr = list(reader)
 
-    print(whichCategory(instance))
+    movie_arr_desc = map(edit_description, movies_arr)
+    movie_cats = map(lambda x: [x], map(whichCategory, movie_arr_desc))
 
+    category_totals = totalUpCategories(movie_arr_desc)
+
+    # Retrievanator.write_to_csv("detailed_new_list2_LDA_cols.csv", movie_arr_desc);
+    # Retrievanator.write_to_csv("detailed_new_list2_cats.csv", movie_cats);
+    Retrievanator.write_to_csv("detailed_new_list2_cat_TOTAL.csv", [category_totals]);
 
 # This is here to ensure main is only called when
 #   this file is run, not just loaded
