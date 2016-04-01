@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import string
 
 # Here is the data that LDA spat out
 LDA = [{"school", "high", "college", "student", "girl", "students", "teacher", "time", "girls", "professor", "friends",
@@ -62,10 +63,18 @@ LDA = [{"school", "high", "college", "student", "girl", "students", "teacher", "
 def edit_description(instance):
 
     # twenty different categories
-    scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    scores = [0] * 20
+
+    # Strip out all the punctuation
+    unstripped = instance[9].lower()
+    for c in string.punctuation:
+        unstripped = unstripped.replace(c,"")
+
+    description = unstripped.split()
 
     # add to the score if a word matches a category
-    for word in instance[10].split():
+    # 10 is the description
+    for word in description:
         for i, category in enumerate(LDA):
             if word in category:
                 scores[i] += 1
@@ -74,8 +83,8 @@ def edit_description(instance):
     target = instance[-1]
 
     # get rid of the description and target columns
-    np.delete(instance, 10, 1) # 10 is which column, 1 means column, 0 means row
-    np.delete(instance, -1, 1)
+    instance = np.delete(instance, 10, 0) # 10 is which column, 1 means column, 0 means row
+    instance = np.delete(instance, -1, 0)
 
     # add the scores
     instance = np.append(instance, scores)
@@ -83,6 +92,8 @@ def edit_description(instance):
     # add the target back on the end
     return np.append(instance, target)
 
+def whichCategory(instance):
+    return np.argmax(instance[9:-2])
 
 def main(argv):
     instance = np.array(["769","Goodfellas","False","en","Crime|Drama","Warner Bros.","25000000","1990-09-12","146","Henry Hill is a small time gangster, who takes part in a robbery with Jimmy \
@@ -94,7 +105,7 @@ def main(argv):
 
     print(instance)
 
-    return True
+    print(whichCategory(instance))
 
 
 # This is here to ensure main is only called when
